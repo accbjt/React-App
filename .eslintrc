@@ -1,0 +1,46 @@
+{
+  "parser": "babel-eslint",
+  "extends": [
+    "airbnb",
+  ],
+  "plugins": [
+    "babel",
+    "react",
+    "promise"
+  ],
+  "env": {
+    "browser" : true
+  },
+  "rules": {
+    "jsx-quotes"           : [2, "prefer-single"],
+    "max-len"              : [2, 120, 2, {
+        ignoreComments: true,
+        ignoreUrls:     true,
+        ignorePattern:  "^\\s*var\\s.+=\\s*require\\s*\\("
+      }
+    ],
+    "object-curly-spacing" : [2, "always"],
+    "import/no-unresolved": 0,
+    "no-magic-numbers": 0,
+    "key-spacing": ["error", { "align": "value" }],
+    "no-ternary": 0,
+    "consistent-this": ["error", "self"],
+    "no-multi-spaces": ["error", {
+      "exceptions": {
+        "VariableDeclarator": true,
+        "ImportDeclaration":  true
+      }
+    }],
+    "indent": ["error", 2, {"SwitchCase": 1}],
+    "class-methods-use-this": 0,
+    "no-param-reassign": ["error", {"props": false}],
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
+    "react/require-extension": "off",
+    "no-prototype-builtins": "off",
+    "react/jsx-filename-extension": "off",
+    "react/react-in-jsx-scope": "off",
+    "import/no-named-as-default": 0,
+    "import/no-named-as-default-member": 0,
+    "comma-dangle": ["error", "never"]
+  }
+}
