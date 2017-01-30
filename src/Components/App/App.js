@@ -3,7 +3,12 @@ import './App.scss';
 
 class App extends React.Component {
   render() {
-    return <div className='title'>React Universal App</div>;
+    return (
+      <div className='app-container'>
+        <div>This is working now</div>
+        {this.props.children}
+      </div>
+    );
   }
 }
 
