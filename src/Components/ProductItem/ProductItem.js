@@ -6,18 +6,18 @@ class ProductItem extends React.Component {
   onHover(e) {
     const el = e.currentTarget;
 
-    TweenMax.to(el, 0.5, { scale: 1.2 });
+    TweenMax.to(el, 0.5, { scale: 1.2, zIndex: 2 });
   }
 
   onMouseLeave(e) {
     const el = e.currentTarget;
 
-    TweenMax.to(el, 0.5, { scale: 1.0 });
+    TweenMax.to(el, 0.5, { scale: 1.0, zIndex: 1 });
   }
 
   render() {
     return (
-      <div className="col-xs-3" onMouseOver={this.onHover} onMouseLeave={this.onMouseLeave}>
+      <div className="col-xs-3 product-item" onMouseOver={this.onHover} onMouseLeave={this.onMouseLeave}>
         {/* <a href="{this.props.url}" onClick="{this.track.bind(this)}" className="{this.linkClass}" itemProp="url"> */}
           {/* <img className="product-item-placeholder" src="/images/bottle-loading-image.jpg" /> */}
           <img className="product-item-image" src={this.props.data.image} alt={this.props.data.title} itemProp="image"/>
@@ -27,11 +27,6 @@ class ProductItem extends React.Component {
                 <div className="title" itemProp="name">
                   {this.props.title}
                 </div>
-                  {/* <rt-virtual rt-if="this.price"> */}
-                    <div className="price">
-                      ${this.props.priceDisplay}
-                    </div>
-                  {/* </rt-virtual> */}
               </div>
             </div>
             <div className="product-info-table">

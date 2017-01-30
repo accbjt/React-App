@@ -1,0 +1,36 @@
+#container {
+  position: relative;
+}
+
+.knob {
+	background-color: #008c7b;
+	text-align: center;
+	font-family: Asap, Avenir, Arial, sans-serif;
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	top: 15px;
+  right: 0;
+  z-index:2;
+
+  border: 2px solid #f5f5f5;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+	border-radius:50%;
+  background: #2ab1c1;
+  box-shadow: 0 0 3px gray;
+}
+
+.knob:hover {
+  background: #55939c;
+}
+
+.range {
+  background-color:#6a7d81;
+  height:20px;
+  position:relative;
+
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+	border-radius: 10px;
+}

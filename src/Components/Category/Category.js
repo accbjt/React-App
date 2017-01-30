@@ -5,14 +5,22 @@ import Filter from '../Filter/Filter';
 
 class Category extends React.Component {
 
+  state = {
+    data:      [],
+    itemCount: 0
+  }
+
   componentWillMount() {
     this.fetchData().then((data) => {
-      this.setState({data})
+      this.setState({
+        data,
+        itemCount: data.length
+      });
     });
   }
 
-  state = {
-    data: []
+  updateItemCount(qty) {
+    this.setState({ itemCount: qty });
   }
 
   async fetchData() {
@@ -23,6 +31,8 @@ class Category extends React.Component {
     } catch(error) {
       console.error(error);
     }
+
+    return [];
   }
 
   render() {
@@ -36,10 +46,14 @@ class Category extends React.Component {
             </div>
           </div>
           <div className="row">
-            <div className="category-filter-content">
-              <Filter/>
+            <div className="category-filter-content col-xs-12">
+              <Filter
+                maxQty={this.state.data.length}
+                qty={this.state.itemCount}
+                updateItemCount={(qty) => { this.updateItemCount(qty); }}
+              />
             </div>
-            <div className="category-main-content products">
+            <div className="category-main-content products col-xs-12">
               <div className="category-products row products">
                 {/* <!--<div className="col-xs-12 col-lg-12 products-header"> */}
                   <h2>{this.props.title}</h2>
