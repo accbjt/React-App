@@ -1,10 +1,23 @@
 import React from 'react';
+import { TweenMax } from 'gsap';
 import './ProductItem.scss';
 
 class ProductItem extends React.Component {
+  onHover(e) {
+    const el = e.currentTarget;
+
+    TweenMax.to(el, 0.5, { scale: 1.2 });
+  }
+
+  onMouseLeave(e) {
+    const el = e.currentTarget;
+
+    TweenMax.to(el, 0.5, { scale: 1.0 });
+  }
+
   render() {
     return (
-      <div className="col-xs-3">
+      <div className="col-xs-3" onMouseOver={this.onHover} onMouseLeave={this.onMouseLeave}>
         {/* <a href="{this.props.url}" onClick="{this.track.bind(this)}" className="{this.linkClass}" itemProp="url"> */}
           {/* <img className="product-item-placeholder" src="/images/bottle-loading-image.jpg" /> */}
           <img className="product-item-image" src={this.props.data.image} alt={this.props.data.title} itemProp="image"/>

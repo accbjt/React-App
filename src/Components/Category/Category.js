@@ -47,12 +47,11 @@ class Category extends React.Component {
                 {/* <div rt-if="this.props.products.length == 0" className="category-products-empty">
                   No Results :(
                 </div> */}
-                {this.state.data.map((item, i) => {
-                  console.log(item.sku_id)
+                {this.state.data.map(item => {
                   return (
                     <ProductItem
                       category="{this.props.title}"
-                      classNameName="col-xs-6 col-sm-6 col-md-4 col-lg-3 section" key={i} data={item} />
+                      classNameName="col-xs-6 col-sm-6 col-md-4 col-lg-3 section" key={item.sku_id} data={item} />
                   );
                 })}
                 <div className="category-pagination col-xs-12 col-lg-12">
