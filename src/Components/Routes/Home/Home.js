@@ -1,11 +1,12 @@
 import React from 'react';
 import './Home.scss';
+import Category from '../../Category/Category';
 
 class Home extends React.Component {
   render() {
     return (
       <div className='home-container'>
-        Home Page
+        <Category title='Products' subtitle='Beer' />
       </div>
     );
   }
