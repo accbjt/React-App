@@ -6,21 +6,24 @@ import Filter from '../Filter/Filter';
 class Category extends React.Component {
 
   state = {
-    data:      [],
-    itemCount: 0
+    data:          [],
+    filteredItems: [],
+    itemCount:     0
   }
 
   componentWillMount() {
     this.fetchData().then((data) => {
       this.setState({
         data,
-        itemCount: data.length
+        itemCount:     data.length,
+        filteredItems: data
       });
     });
   }
 
   updateItemCount(qty) {
     this.setState({ itemCount: qty });
+    this.filterData();
   }
 
   async fetchData() {
@@ -33,6 +36,12 @@ class Category extends React.Component {
     }
 
     return [];
+  }
+
+  filterData() {
+    this.setState({
+      filteredItems: this.state.data.slice(0, this.state.itemCount)
+    });
   }
 
   render() {
@@ -61,7 +70,7 @@ class Category extends React.Component {
                 {/* <div rt-if="this.props.products.length == 0" className="category-products-empty">
                   No Results :(
                 </div> */}
-                {this.state.data.map(item => {
+                {this.state.filteredItems.map(item => {
                   return (
                     <ProductItem
                       category="{this.props.title}"
