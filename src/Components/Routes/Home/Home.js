@@ -6,7 +6,7 @@ class Home extends React.Component {
   render() {
     return (
       <div className='container'>
-        <Category title='Products' subtitle='Beer' />
+        <Category categoryId={this.props.routeParams.categoryId} title='Products' subtitle='Beer' />
       </div>
     );
   }

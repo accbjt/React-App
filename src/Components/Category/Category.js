@@ -8,15 +8,14 @@ class Category extends React.Component {
   state = {
     data:          [],
     filteredItems: [],
-    itemCount:     0
+    itemCount:     20
   }
 
   componentWillMount() {
     this.fetchData().then((data) => {
       this.setState({
         data,
-        itemCount:     data.length,
-        filteredItems: data
+        filteredItems: data.slice(0, this.state.itemCount)
       });
     });
   }
@@ -26,9 +25,25 @@ class Category extends React.Component {
     this.filterData();
   }
 
+  categoryId() {
+    return '5769c97729c54c2b71db6f00';
+  }
+
+  latitude() {
+    return '34.179172';
+  }
+
+  longitude() {
+    return '-118.76286';
+  }
+
+  size() {
+    return '100';
+  }
+
   async fetchData() {
     try {
-      let response = await fetch('https://menu.saucey-api.com/category/5769c97729c54c2b71db6f00?lat=34.179172&lng=-118.762868&size=40');
+      let response = await fetch(`https://menu.saucey-api.com/category/${this.categoryId()}?lat=${this.latitude()}&lng=${this.longitude()}8&size=${this.size()}`);
       let responseJson = await response.json();
       return responseJson.products;
     } catch(error) {

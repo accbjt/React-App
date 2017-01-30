@@ -9,7 +9,7 @@ export default class AppRouter extends React.Component {
       <Router history={browserHistory}>
         <Route path='/' component={App} >
           <IndexRoute component={Home} />
-          <Route path='category/:id' component={Home} />
+          <Route path='category/:categoryId' component={Home} />
         </Route>
       </Router>
     );
