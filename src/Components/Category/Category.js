@@ -72,7 +72,7 @@ class Category extends React.Component {
           <div className="row">
             <div className="category-filter-content col-xs-12">
               <Filter
-                maxQty={this.state.data.length}
+                maxQty={100}
                 qty={this.state.itemCount}
                 updateItemCount={(qty) => { this.updateItemCount(qty); }}
               />

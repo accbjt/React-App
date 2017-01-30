@@ -1,5 +1,6 @@
 import React from 'react';
 import Draggable from 'gsap/Draggable';
+import { TweenMax } from 'gsap';
 import './Filter.scss';
 
 class Filter extends React.Component {
@@ -7,6 +8,7 @@ class Filter extends React.Component {
     const containerWidth = this.container.offsetWidth;
     const knobWidth = this.knob.offsetWidth;
     const knobOffset = knobWidth / 2;
+    const units = containerWidth / this.props.maxQty;
     const self = this;
 
     Draggable.create('.knob', {
@@ -14,11 +16,12 @@ class Filter extends React.Component {
       bounds: { left: -knobOffset, width: containerWidth + knobWidth },
       cursor: 'pointer',
       onDrag() {
-        const units = containerWidth / self.props.maxQty;
         const qty = Math.round((this.x / units) + self.props.maxQty);
         self.props.updateItemCount(qty);
       }
     });
+
+    TweenMax.to('.knob', 0, { x: -80*units })
   }
 
   render() {
