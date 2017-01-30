@@ -17,7 +17,7 @@ class ProductItem extends React.Component {
 
   render() {
     return (
-      <div className="col-xs-3 product-item" onMouseOver={this.onHover} onMouseLeave={this.onMouseLeave}>
+      <div className="col-xs-6 col-sm-3 product-item" onMouseOver={this.onHover} onMouseLeave={this.onMouseLeave}>
         {/* <a href="{this.props.url}" onClick="{this.track.bind(this)}" className="{this.linkClass}" itemProp="url"> */}
           {/* <img className="product-item-placeholder" src="/images/bottle-loading-image.jpg" /> */}
           <img className="product-item-image" src={this.props.data.image} alt={this.props.data.title} itemProp="image"/>

@@ -1,6 +1,9 @@
 @import "../../css/variables";
 
 .category {
+  h2 {
+    text-align: center;
+  }
 
   .category-header {
 
@@ -57,15 +60,12 @@
   }
 
   .category-filter-content {
-    width: 250px;
     @media screen and (min-width: 48em) {
       display: block;
       position: relative;
-      top: 15px;
-      height: 50px;
-    }
-    @media screen and (min-width: 64em) {
-      width: 290px;
+      top: 10px;
+      height: 60px;
+      margin-bottom: 35px;
     }
   }
 

@@ -24,8 +24,10 @@ class Filter extends React.Component {
   render() {
     return (
       <div className='item-range' ref={(x) => { this.container = x; }}>
-        <div className="qty">{this.props.qty}</div>
-        <div className="knob" id="knob" ref={(x) => { this.knob = x; }}></div>
+        <h4 className='title'>Product Range</h4>
+        <div className='knob' id='knob' ref={(x) => { this.knob = x; }}>
+          <div className='qty'>{this.props.qty}</div>
+        </div>
         <div className="range"></div>
       </div>
     );
