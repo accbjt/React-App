@@ -1,0 +1,92 @@
+@import "../../css/variables";
+
+.product-item {
+
+  position: relative;
+
+  .img-container {
+    text-align: center;
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  &-image, &-placeholder {
+    width: 100% !important;
+  }
+
+  &-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .product-info {
+    padding: 10px 10px;
+    background-color: white;
+    border-top: 1px solid $grey;
+    text-align: left;
+    position: relative;
+    @include text-overflow();
+    @media screen and (min-width: 48em) {
+      padding: 10px;
+      background-color: white;
+      box-shadow: 0px -10px 46px -17px rgba(0, 0, 0, 0.4);
+      border-top: 1px solid $grey;
+      background-color: white;
+    }
+    &-table {
+      display: table;
+      width: 100%;
+      box-sizing: border-box;
+      border-collapse: collapse;
+    }
+    &-row {
+      display: table-row;
+    }
+    .title, .subtitle {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      display: table-cell;
+      max-width:1px;
+      width:100%;
+    }
+    .title {
+      font-family: 'brandon-med';
+    }
+    .volume, .price {
+      display: table-cell;
+      text-align: right;
+      white-space: nowrap;
+      padding-left: 10px;
+    }
+    .price {
+
+    }
+  }
+
+
+  .img-hover {
+    display: none;
+    position: absolute;
+    bottom: 25%;
+    left: 50%;
+    transform: translateY(-50%);
+    transform: translateX(-50%);
+
+  }
+
+
+
+
+  @media screen and (min-width: 48em) {
+    &:hover .img-hover {
+      text-align: center;
+      width: 80%;
+      display: inline-block;
+      z-index: 1000;
+    }
+  }
+}

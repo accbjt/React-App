@@ -11,8 +11,8 @@ app.use(Express.static(__dirname + '/build'));
 
 app.get('*', (request, response) => {
   response.sendFile(path.resolve(__dirname, 'src', 'index.html'))
-})
+});
 
 app.listen(8080, function(){
-  console.log('working');
+  console.log('listening on localhost:8080');
 });

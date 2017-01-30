@@ -1,11 +1,12 @@
 import React from 'react';
 import './App.scss';
+import Category from '../Category/Category';
 
 class App extends React.Component {
   render() {
     return (
       <div className='app-container'>
-        <div>This is working now</div>
+        <Category title='Products' subtitle='Beer' />
         {this.props.children}
       </div>
     );
