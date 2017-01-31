@@ -178,12 +178,6 @@ class Category extends React.Component {
                       classNameName='col-xs-6 col-sm-6 col-md-4 col-lg-3 section' key={item.sku_id} data={item} />
                   );
                 })}
-                <div className='category-pagination col-xs-12 col-lg-12'>
-                  <span className='category-pagination-count text-bold'>{this.props.count} Products</span>
-                  <a href='{this.prevUrl()}' className='category-pagination-button prev-button'>Previous</a>
-
-                  <a href='{this.nextUrl()}' className='category-pagination-button next-button'>Next</a>
-                </div>
               </div>
             </div>
           </div>
