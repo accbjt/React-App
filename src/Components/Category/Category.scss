@@ -1,21 +1,30 @@
-@import "../../css/variables";
+@import '../../css/variables';
 
 .category {
   h2 {
     text-align: center;
   }
 
+  .address {
+    margin-top: 45px;
+
+    label {
+      margin-right: 15px;
+    }
+  }
+
+  .category-list {
+    margin-top: 100px;
+  }
+
   .category-header {
-
-    position: relative;
     background-color: $primary-color;
-
-
+    position: relative;
 
     &-text {
-      position: absolute;
       color: white;
       left: 20px;
+      position: absolute;
       top: 50px;
       @media screen and (min-width: 48em){
         top: 30px;
