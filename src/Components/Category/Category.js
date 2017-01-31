@@ -1,26 +1,27 @@
+import { Link } from 'react-router';
 import React from 'react';
 import './Category.scss';
 import ProductItem from '../ProductItem/ProductItem';
 import Filter from '../Filter/Filter';
-import { Link } from 'react-router';
 
 class Category extends React.Component {
 
   state = {
-    data:            [],
-    filteredItems:   [],
-    categories:      [],
-    itemCount:       20,
-    latitude:        '34.0836804',
-    longitude:       '-118.3415054',
-    address:         ''
+    data:          [],
+    filteredItems: [],
+    categories:    [],
+    deliveryZone:  false,
+    itemCount:     20,
+    latitude:      '34.0836804',
+    longitude:     '-118.3415054',
+    address:       ''
   }
 
   componentWillMount() {
     this.getAllData();
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps) {
     if (prevProps.params.categoryId !== this.props.params.categoryId) {
       this.fetchData().then((data) => {
         this.setState({
@@ -34,7 +35,8 @@ class Category extends React.Component {
   getAllData() {
     this.fetchCategories().then((data) => {
       this.setState({
-        categories: data
+        categories:   data.menu,
+        deliveryZone: data.store.inside_delivery_zone
       });
     });
 
@@ -63,7 +65,7 @@ class Category extends React.Component {
     try {
       const response = await fetch(`https://menu.saucey-api.com/?lat=${this.state.latitude}&lng=${this.state.longitude}`);
       const responseJson = await response.json();
-      return responseJson.menu;
+      return responseJson;
     } catch (error) {
       console.error(error);
     }
@@ -131,6 +133,18 @@ class Category extends React.Component {
     });
   }
 
+  renderInsideDelivaryZone() {
+    if (this.state.deliveryZone) {
+      return (
+        <i style={{ color: '#96d883' }} className='glyphicon glyphicon-ok-sign' />
+      );
+    }
+
+    return (
+      <i className='glyphicon glyphicon-remove-sign' />
+    );
+  }
+
   render() {
     return (
       <div className="category container {this.props.title.replace(/\s/g, '-').toLowerCase()}">
@@ -149,13 +163,16 @@ class Category extends React.Component {
                 updateItemCount={(qty) => { this.updateItemCount(qty); }}
               />
 
-              <form className='form-inline address' onSubmit={(e) => { this.handleSubmit(e); }}>
+              <form className='form-inline address col-xs-12 col-sm-6' onSubmit={(e) => { this.handleSubmit(e); }}>
                 <div className='form-group'>
                   <label htmlFor='address'>Address</label>
                   <input className='form-control' type='text' placeholder='5555 Melrose Ave, Los Angeles, Ca' value={this.state.address} onChange={(e) => { this.handleChange(e); }} />
                 </div>
                 <input className='btn btn-default' type='submit' value='Submit' />
               </form>
+              <div style={{marginTop: 52}}>
+                {this.renderInsideDelivaryZone()} In Delivery Zone
+              </div>
             </div>
           </div>
           <div className='row'>
